@@ -1,0 +1,29 @@
+name: Check desktop prototype
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  desktop:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: apps/desktop/go.mod
+          cache-dependency-path: apps/desktop/go.sum
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: make prototype
+      - run: make check test
+      - name: Archive bundle with executable permissions
+        run: ditto -c -k --keepParent "apps/desktop/build/bin/Assessment Caddy.app" apps/desktop/build/bin/assessment-caddy-macos.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macos-feasibility-prototype
+          path: apps/desktop/build/bin/assessment-caddy-macos.zip

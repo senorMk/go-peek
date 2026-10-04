@@ -1,0 +1,10 @@
+{
+  "name": "assessment-caddy",
+  "private": true,
+  "workspaces": ["apps/desktop/frontend"],
+  "scripts": {
+    "check": "npm run check --workspace=@assessment-caddy/desktop",
+    "build:frontend": "npm run build --workspace=@assessment-caddy/desktop",
+    "preview": "npm run dev --workspace=@assessment-caddy/desktop"
+  }
+}

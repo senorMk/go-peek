@@ -5,6 +5,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"github.com/senorMk/go-peek/apps/desktop/internal/providers"
 	"strings"
 	"sync"
 	"time"
@@ -16,9 +17,11 @@ const MaxMarkerBytes = 512
 var ErrBusy = errors.New("a demo stream is already running; cancel it first")
 
 type Event struct {
-	RequestID string `json:"requestId"`
-	Kind      string `json:"kind"`
-	Text      string `json:"text,omitempty"`
+	RequestID string           `json:"requestId"`
+	Kind      string           `json:"kind"`
+	Text      string           `json:"text,omitempty"`
+	Error     string           `json:"error,omitempty"`
+	Usage     *providers.Usage `json:"usage,omitempty"`
 }
 
 // Sink must be nonblocking and must not call Manager methods synchronously.

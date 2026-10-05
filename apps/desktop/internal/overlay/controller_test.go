@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func fixture() (*Controller, <-chan string) {
+func fixture() (*Controller, chan string) {
 	events := make(chan string, 1000)
 	c := New(func() { events <- "show" }, func() { events <- "hide" })
 	return c, events
@@ -50,6 +50,43 @@ func TestShortcutToggleInvalidatesPendingRestore(t *testing.T) {
 	expect(t, events, "hide")
 	c.Toggle()
 	expect(t, events, "show")
+	c.Toggle()
+	expect(t, events, "hide")
+	quiet(t, events, 100*time.Millisecond)
+}
+
+func TestShortcutRestoreUsesCurrentDisplayWithoutChangingOtherRestores(t *testing.T) {
+	c, events := fixture()
+	defer c.Close()
+	showHere := func() { events <- "show-current-display" }
+	c.ToggleWithRestore(showHere)
+	expect(t, events, "hide")
+	c.ToggleWithRestore(showHere)
+	expect(t, events, "show-current-display")
+	c.HideFor(20 * time.Millisecond)
+	expect(t, events, "hide")
+	expect(t, events, "show")
+	finish, ok := c.BeginCapture()
+	if !ok {
+		t.Fatal("capture refused")
+	}
+	expect(t, events, "hide")
+	c.ToggleWithRestore(showHere)
+	quiet(t, events, 20*time.Millisecond)
+	finish()
+	expect(t, events, "show")
+	c.Close()
+	c.ToggleWithRestore(showHere)
+	quiet(t, events, 20*time.Millisecond)
+}
+
+func TestCurrentDisplayRestoreCancelsTimedRestore(t *testing.T) {
+	c, events := fixture()
+	defer c.Close()
+	c.HideFor(50 * time.Millisecond)
+	expect(t, events, "hide")
+	c.ToggleWithRestore(func() { events <- "show-current-display" })
+	expect(t, events, "show-current-display")
 	c.Toggle()
 	expect(t, events, "hide")
 	quiet(t, events, 100*time.Millisecond)

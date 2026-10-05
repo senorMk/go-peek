@@ -2,14 +2,6 @@
 
 **Capture a problem. Find your next step.**
 
-GoPeek is proprietary. Copyright (c) 2026 senorMk. All rights reserved.
-The source is publicly visible for inspection; building, running, modifying,
-or redistributing GoPeek requires prior written permission, except as permitted
-by applicable law or GitHub's Terms of Service. See [LICENSE.md](LICENSE.md) for the
-full notice. The setup instructions below do not grant a license. Third-party
-dependencies retain their own licenses; released binaries will require a
-separate end-user license agreement.
-
 A lightweight desktop coding assistant in development. The current build provides a **macOS screenshot-first coding workflow** using Go, Wails, Svelte, and TypeScript: hints, approach explanations, code reviews, debugging, full solutions, streaming, and follow-ups. OpenAI and OpenCode Zen adapters are implemented and covered by mock HTTP tests; live requests have not yet been verified.
 
 Capture exclusion remains a release requirement. The built-in screenshot/video comparisons passed for the earlier tested bundle on macOS 26.6.2; additional tool/lifecycle checks are pending. At the user’s request, development continues while those checks are deferred. The capture UI keeps the flag status separate from validated compatibility.
@@ -129,3 +121,11 @@ The [Go monorepo template](https://github.com/senorMk/go-monorepo-template) insp
 Live OpenAI/Zen requests and native credential setup/access/deletion are pending. No normal test spends API credits. Capture testing across OBS, Meet, Zoom, all window transitions, and the rebuilt UI is deferred at the user's request. Signing/notarization for distribution, performance measurements, live screenshot-to-model verification, browser extraction, and Windows support remain later work. Phase 0 and Phase 1 are not marked complete.
 
 The shared language catalog is [languages.json](apps/desktop/internal/prompts/languages.json); both the UI selector and Go validation use it. Language coverage was expanded using [GitHub Octoverse](https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/) and the [Stack Overflow developer survey](https://survey.stackoverflow.co/2025/technology) as references, alongside additional languages used in coding practice. Selection steers the assistant’s response; the app does not execute these languages.
+
+GoPeek is proprietary. Copyright (c) 2026 senorMk. All rights reserved.
+The source is publicly visible for inspection; building, running, modifying,
+or redistributing GoPeek requires prior written permission, except as permitted
+by applicable law or GitHub's Terms of Service. See [LICENSE.md](LICENSE.md) for the
+full notice. The setup instructions above do not grant a license. Third-party
+dependencies retain their own licenses; released binaries will require a
+separate end-user license agreement.

@@ -1,10 +1,10 @@
 {
-  "name": "assessment-caddy",
+  "name": "go-peek",
   "private": true,
   "workspaces": ["apps/desktop/frontend"],
   "scripts": {
-    "check": "npm run check --workspace=@assessment-caddy/desktop",
-    "build:frontend": "npm run build --workspace=@assessment-caddy/desktop",
-    "preview": "npm run dev --workspace=@assessment-caddy/desktop"
+    "check": "npm run check --workspace=@go-peek/desktop",
+    "build:frontend": "npm run build --workspace=@go-peek/desktop",
+    "preview": "npm run dev --workspace=@go-peek/desktop"
   }
 }

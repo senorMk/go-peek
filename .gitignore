@@ -1,4 +1,5 @@
 .cache/
+/PLAN.md
 node_modules/
 apps/desktop/frontend/dist/
 apps/desktop/build/bin/

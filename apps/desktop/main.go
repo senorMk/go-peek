@@ -149,7 +149,10 @@ func (d *Desktop) registerShortcut(ctx context.Context) {
 					case <-ctx.Done():
 						return
 					case <-events:
-						d.window.Toggle()
+						d.window.ToggleWithRestore(func() {
+							platform.MoveWindowToCurrentDisplay()
+							runtime.WindowShow(d.ctx)
+						})
 					}
 				}
 			}()

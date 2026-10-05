@@ -28,6 +28,13 @@ func (c *Controller) cancelRestore() {
 }
 
 func (c *Controller) Toggle() {
+	c.ToggleWithRestore(c.show)
+}
+
+// ToggleWithRestore uses a custom show action for this toggle only. Timed and
+// capture restores still use the default show callback. The callback must be
+// nonblocking, just like the callbacks passed to New.
+func (c *Controller) ToggleWithRestore(show func()) {
 	c.mu.Lock()
 	defer c.mu.Unlock()
 	if c.closed || c.capturing {
@@ -35,7 +42,7 @@ func (c *Controller) Toggle() {
 	}
 	c.cancelRestore()
 	if c.hidden {
-		c.show()
+		show()
 	} else {
 		c.hide()
 	}

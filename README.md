@@ -2,6 +2,14 @@
 
 **Capture a problem. Find your next step.**
 
+GoPeek is proprietary. Copyright (c) 2026 senorMk. All rights reserved.
+The source is publicly visible for inspection; building, running, modifying,
+or redistributing GoPeek requires prior written permission, except as permitted
+by applicable law or GitHub's Terms of Service. See [LICENSE.md](LICENSE.md) for the
+full notice. The setup instructions below do not grant a license. Third-party
+dependencies retain their own licenses; released binaries will require a
+separate end-user license agreement.
+
 A lightweight desktop coding assistant in development. The current build provides a **macOS screenshot-first coding workflow** using Go, Wails, Svelte, and TypeScript: hints, approach explanations, code reviews, debugging, full solutions, streaming, and follow-ups. OpenAI and OpenCode Zen adapters are implemented and covered by mock HTTP tests; live requests have not yet been verified.
 
 Capture exclusion remains a release requirement. The built-in screenshot/video comparisons passed for the earlier tested bundle on macOS 26.6.2; additional tool/lifecycle checks are pending. At the user’s request, development continues while those checks are deferred. The capture UI keeps the flag status separate from validated compatibility.

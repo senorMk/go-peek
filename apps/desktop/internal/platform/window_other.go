@@ -2,4 +2,6 @@
 
 package platform
 
+func SetApplicationIcon(icon []byte) {}
+
 func MoveWindowToCurrentDisplay() {}

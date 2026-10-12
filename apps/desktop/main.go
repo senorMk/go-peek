@@ -24,6 +24,9 @@ import (
 //go:embed all:frontend/dist
 var assets embed.FS
 
+//go:embed build/appicon.png
+var appIcon []byte
+
 // Desktop is the narrow frontend bridge. Lifecycle functions stay outside the bindings.
 type Desktop struct {
 	ready                     chan struct{}
@@ -218,7 +221,10 @@ func main() {
 			desktop.streams = session.New(func(event session.Event) { runtime.EventsEmit(ctx, "demo:stream", event) })
 			close(desktop.ready)
 		},
-		OnDomReady: func(_ context.Context) { desktop.registerShortcut(lifecycle) },
+		OnDomReady: func(_ context.Context) {
+			platform.SetApplicationIcon(appIcon)
+			desktop.registerShortcut(lifecycle)
+		},
 		OnShutdown: func(_ context.Context) {
 			<-desktop.ready
 			desktop.stopLifecycle()

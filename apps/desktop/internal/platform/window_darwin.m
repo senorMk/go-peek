@@ -9,6 +9,21 @@
 - (NSWindow *)mainWindow;
 @end
 
+void GoPeekSetApplicationIcon(const unsigned char *bytes, int length) {
+    if (!bytes || length <= 0) return;
+    // Copy Go-owned bytes before returning. The queued block retains data until
+    // Cocoa finishes decoding it, without holding a Go pointer across calls.
+    NSData *data = [[NSData alloc] initWithBytes:bytes length:(NSUInteger)length];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @autoreleasepool {
+            NSImage *icon = [[NSImage alloc] initWithData:data];
+            if (icon) [NSApp setApplicationIconImage:icon];
+            [icon release];
+        }
+    });
+    [data release];
+}
+
 static NSRect FrameForDisplay(NSRect frame, NSRect visible, BOOL sameDisplay) {
     frame.size.width = MIN(frame.size.width, visible.size.width);
     frame.size.height = MIN(frame.size.height, visible.size.height);

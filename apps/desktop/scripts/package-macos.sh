@@ -5,7 +5,16 @@ if [[ "$(go env GOOS)" != "darwin" ]]; then
   exit 1
 fi
 bundle="build/bin/GoPeek.app"
-mkdir -p "$bundle/Contents/MacOS"
+iconset="build/bin/GoPeek.iconset"
+mkdir -p "$bundle/Contents/MacOS" "$bundle/Contents/Resources" "$iconset"
+# appicon.png is the 1024px rendering of build/appicon.svg. Generate every
+# standard and Retina representation with native macOS tools before signing.
+for size in 16 32 128 256 512; do
+  sips -z "$size" "$size" build/appicon.png --out "$iconset/icon_${size}x${size}.png" >/dev/null
+  retina_size=$((size * 2))
+  sips -z "$retina_size" "$retina_size" build/appicon.png --out "$iconset/icon_${size}x${size}@2x.png" >/dev/null
+done
+iconutil -c icns "$iconset" -o "$bundle/Contents/Resources/appicon.icns"
 CGO_LDFLAGS="${CGO_LDFLAGS:-} -framework UniformTypeIdentifiers" go build -tags desktop,production -ldflags '-s -w' -o "$bundle/Contents/MacOS/go-peek" .
 cp build/Info.plist "$bundle/Contents/Info.plist"
 # A default ad hoc DR uses the changing executable hash, invalidating local

@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>GoPeek · Icon concepts</title>
+  <style>
+    :root { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #eff6f5; background: #10151c; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { max-width: 1200px; margin: auto; padding: 64px 32px; }
+    .eyebrow { color: #8caaa7; text-transform: uppercase; font-size: 12px; letter-spacing: .18em; }
+    h1 { font-size: clamp(32px, 5vw, 54px); font-weight: 600; letter-spacing: -.05em; margin: 16px 0; }
+    .intro { max-width: 630px; color: #9caeb5; line-height: 1.7; }
+    .toolbar { margin: 32px 0; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .toolbar span { color: #9caeb5; font-size: 13px; }
+    .switch { display: flex; padding: 4px; border: 1px solid #34424c; border-radius: 10px; gap: 4px; }
+    button { font: inherit; cursor: pointer; }
+    .switch button { border: 0; border-radius: 6px; padding: 8px 14px; color: #a7b8c0; background: transparent; font-size: 13px; }
+    .switch button[aria-pressed="true"] { background: #d4f8ea; color: #12372b; }
+    button:focus-visible, a:focus-visible { outline: 2px solid #72ecc0; outline-offset: 4px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    article { overflow: hidden; border: 1px solid #303c47; border-radius: 20px; background: #171e27; }
+    .stage { display: grid; place-items: center; height: 270px; background: #1e2935; transition: background .2s; }
+    body[data-preview="light"] .stage, body[data-preview="light"] .sizes { background: #e6ecef; }
+    .hero { width: 164px; height: 164px; filter: drop-shadow(0 16px 16px #0003); }
+    .copy { padding: 24px; }
+    .heading { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    h2 { font-size: 20px; letter-spacing: -.02em; margin: 0; }
+    .badge { padding: 4px 8px; color: #72ecc0; border: 1px solid #376455; border-radius: 6px; font-size: 11px; }
+    .copy p { margin: 12px 0 20px; color: #9caeb5; line-height: 1.6; font-size: 14px; min-height: 44px; }
+    .sizes { display: flex; align-items: end; gap: 24px; padding: 20px; border-radius: 12px; background: #1e2935; transition: background .2s; }
+    figure { display: flex; flex-direction: column; align-items: center; gap: 10px; margin: 0; }
+    figcaption { color: #8caaa7; font-size: 11px; }
+    body[data-preview="light"] figcaption { color: #536674; }
+    .download { display: inline-block; margin-top: 20px; color: #72ecc0; text-decoration: none; font-size: 13px; }
+    .download:hover { text-decoration: underline; }
+    footer { color: #7f929f; font-size: 12px; line-height: 1.7; margin-top: 28px; }
+    .definitions { position: absolute; width: 0; height: 0; overflow: hidden; }
+    @media (max-width: 700px) { main { padding: 36px 20px; } .grid { grid-template-columns: 1fr; } .stage { height: 230px; } }
+  </style>
+</head>
+<body data-preview="dark">
+  <svg class="definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <symbol id="peek-window" viewBox="0 0 256 256">
+        <rect x="8" y="8" width="240" height="240" rx="54" fill="#111c2b"/>
+        <rect x="43" y="54" width="170" height="151" rx="21" fill="#23364a"/>
+        <path d="M64 54h128a21 21 0 0 1 21 21v17H43V75a21 21 0 0 1 21-21Z" fill="#354b60"/>
+        <circle cx="65" cy="73" r="5" fill="#91abae"/>
+        <circle cx="82" cy="73" r="5" fill="#91abae"/>
+        <circle cx="99" cy="73" r="5" fill="#91abae"/>
+        <path d="m102 121-24 24 24 24m52-48 24 24-24 24" fill="none" stroke="#72ecc0" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m139 117-20 56" fill="none" stroke="#d4f8ea" stroke-width="11" stroke-linecap="round"/>
+        <path d="M213 134v50a21 21 0 0 1-21 21h-50Z" fill="#72ecc0"/>
+        <path d="M142 205v-50a21 21 0 0 1 21-21h50Z" fill="#b1f7dc"/>
+      </symbol>
+      <symbol id="code-eye" viewBox="0 0 256 256">
+        <rect x="8" y="8" width="240" height="240" rx="54" fill="#111c2b"/>
+        <path d="M35 128c22-38 53-58 93-58s71 20 93 58c-22 38-53 58-93 58s-71-20-93-58Z" fill="#23364a" stroke="#72ecc0" stroke-width="12" stroke-linejoin="round"/>
+        <circle cx="128" cy="128" r="44" fill="#111c2b"/>
+        <path d="m113 110-18 18 18 18m30-36 18 18-18 18" fill="none" stroke="#d4f8ea" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="capture-spark" viewBox="0 0 256 256">
+        <rect x="8" y="8" width="240" height="240" rx="54" fill="#111c2b"/>
+        <path d="M92 58H69a11 11 0 0 0-11 11v23m106-34h23a11 11 0 0 1 11 11v23M58 164v23a11 11 0 0 0 11 11h23m106-34v23a11 11 0 0 1-11 11h-23" fill="none" stroke="#72ecc0" stroke-width="15" stroke-linecap="round"/>
+        <path d="m128 78 14 36 36 14-36 14-14 36-14-36-36-14 36-14Z" fill="#d4f8ea"/>
+        <circle cx="180" cy="77" r="7" fill="#72ecc0"/>
+      </symbol>
+      <symbol id="hidden-g" viewBox="0 0 256 256">
+        <rect x="8" y="8" width="240" height="240" rx="54" fill="#111c2b"/>
+        <path d="M167 78a65 65 0 1 0 25 51h-62" fill="none" stroke="#72ecc0" stroke-width="23" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M175 36h36a25 25 0 0 1 25 25v134a25 25 0 0 1-25 25h-36Z" fill="#23364a"/>
+        <path d="M175 51v154" fill="none" stroke="#91abae" stroke-width="5" stroke-linecap="round"/>
+        <path d="m196 118 11 10-11 10" fill="none" stroke="#b1f7dc" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+    </defs>
+  </svg>
+  <main>
+    <div class="eyebrow">GoPeek / Visual exploration</div>
+    <h1>A small icon. A clear identity.</h1>
+    <p class="intro">Four directions for a coding assistant that helps you capture a problem and find your next step. Navy foundations, mint accents, and a shared rounded silhouette.</p>
+    <div class="toolbar">
+      <span>Preview background</span>
+      <div class="switch" role="group" aria-label="Preview background">
+        <button type="button" data-background="dark" aria-pressed="true">Dark</button>
+        <button type="button" data-background="light" aria-pressed="false">Light</button>
+      </div>
+    </div>
+    <section class="grid" aria-label="Icon concepts">
+      <article data-icon="peek-window">
+        <div class="stage"><svg class="hero" role="img" aria-label="Peek window icon" viewBox="0 0 256 256"><use href="#peek-window"/></svg></div>
+        <div class="copy">
+          <div class="heading"><h2>01 / Peek window</h2></div>
+          <p>A lifted window corner reveals code. The most direct connection between the GoPeek name and its coding workflow.</p>
+          <div class="sizes" aria-label="Peek window at small sizes"></div>
+          <a class="download" href="#" download="gopeek-peek-window.svg">Download SVG ↗</a>
+        </div>
+      </article>
+      <article data-icon="code-eye">
+        <div class="stage"><svg class="hero" role="img" aria-label="Code eye icon" viewBox="0 0 256 256"><use href="#code-eye"/></svg></div>
+        <div class="copy">
+          <div class="heading"><h2>02 / Code eye</h2></div>
+          <p>An eye with code brackets at its center. A bold, readable mark for looking closely at a coding problem.</p>
+          <div class="sizes" aria-label="Code eye at small sizes"></div>
+          <a class="download" href="#" download="gopeek-code-eye.svg">Download SVG ↗</a>
+        </div>
+      </article>
+      <article data-icon="capture-spark">
+        <div class="stage"><svg class="hero" role="img" aria-label="Capture brackets and spark icon" viewBox="0 0 256 256"><use href="#capture-spark"/></svg></div>
+        <div class="copy">
+          <div class="heading"><h2>03 / Capture brackets</h2><span class="badge">Selected</span></div>
+          <p>Screenshot corners frame a bright spark. Puts the capture-and-answer workflow at the center of the identity.</p>
+          <div class="sizes" aria-label="Capture brackets at small sizes"></div>
+          <a class="download" href="#" download="gopeek-capture-spark.svg">Download SVG ↗</a>
+        </div>
+      </article>
+      <article data-icon="hidden-g">
+        <div class="stage"><svg class="hero" role="img" aria-label="Partially hidden G icon" viewBox="0 0 256 256"><use href="#hidden-g"/></svg></div>
+        <div class="copy">
+          <div class="heading"><h2>04 / Hidden G</h2></div>
+          <p>A geometric G peeks from behind a sliding panel. A quieter, more abstract direction built around the app’s initial.</p>
+          <div class="sizes" aria-label="Hidden G at small sizes"></div>
+          <a class="download" href="#" download="gopeek-hidden-g.svg">Download SVG ↗</a>
+        </div>
+      </article>
+    </section>
+    <footer>Concept review · Each mark is an original inline SVG. Compare the 16, 32, and 64 px previews for legibility.<br>This page is self-contained and works offline. Final macOS icon packaging follows after choosing a direction.</footer>
+  </main>
+  <script>
+    const svgNS = 'http://www.w3.org/2000/svg';
+    document.querySelectorAll('[data-background]').forEach(button => {
+      button.addEventListener('click', () => {
+        document.body.dataset.preview = button.dataset.background;
+        document.querySelectorAll('[data-background]').forEach(option => {
+          option.setAttribute('aria-pressed', String(option === button));
+        });
+      });
+    });
+    document.querySelectorAll('article[data-icon]').forEach(card => {
+      const id = card.dataset.icon;
+      [16, 32, 64].forEach(size => {
+        const figure = document.createElement('figure');
+        const svg = document.createElementNS(svgNS, 'svg');
+        svg.setAttribute('viewBox', '0 0 256 256');
+        svg.setAttribute('width', size);
+        svg.setAttribute('height', size);
+        svg.setAttribute('aria-hidden', 'true');
+        const use = document.createElementNS(svgNS, 'use');
+        use.setAttribute('href', '#' + id);
+        svg.append(use);
+        const caption = document.createElement('figcaption');
+        caption.textContent = size + ' px';
+        figure.append(svg, caption);
+        card.querySelector('.sizes').append(figure);
+      });
+      const standalone = document.createElementNS(svgNS, 'svg');
+      standalone.setAttribute('viewBox', '0 0 256 256');
+      standalone.setAttribute('width', '256');
+      standalone.setAttribute('height', '256');
+      const title = document.createElementNS(svgNS, 'title');
+      title.textContent = 'GoPeek — ' + card.querySelector('h2').textContent.split(' / ')[1];
+      standalone.append(title);
+      [...document.getElementById(id).children].forEach(shape => standalone.append(shape.cloneNode(true)));
+      const source = new XMLSerializer().serializeToString(standalone);
+      card.querySelector('.download').href = URL.createObjectURL(new Blob([source], { type: 'image/svg+xml' }));
+    });
+  </script>
+</body>
+</html>

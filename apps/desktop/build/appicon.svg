@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="1024" height="1024">
+  <title>GoPeek — Capture brackets</title>
+  <rect x="8" y="8" width="240" height="240" rx="54" fill="#111c2b"/>
+  <path d="M92 58H69a11 11 0 0 0-11 11v23m106-34h23a11 11 0 0 1 11 11v23M58 164v23a11 11 0 0 0 11 11h23m106-34v23a11 11 0 0 1-11 11h-23" fill="none" stroke="#72ecc0" stroke-width="15" stroke-linecap="round"/>
+  <path d="m128 78 14 36 36 14-36 14-14 36-14-36-36-14 36-14Z" fill="#d4f8ea"/>
+  <circle cx="180" cy="77" r="7" fill="#72ecc0"/>
+</svg>

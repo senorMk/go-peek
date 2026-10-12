@@ -5,6 +5,7 @@
 <key>CFBundleDisplayName</key><string>GoPeek</string>
 <key>CFBundleIdentifier</key><string>com.senormk.go-peek.prototype</string>
 <key>CFBundleExecutable</key><string>go-peek</string>
+<key>CFBundleIconFile</key><string>appicon.icns</string>
 <key>CFBundlePackageType</key><string>APPL</string>
 <key>CFBundleShortVersionString</key><string>0.0.1</string>
 <key>CFBundleVersion</key><string>1</string>

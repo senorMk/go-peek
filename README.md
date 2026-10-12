@@ -22,6 +22,8 @@ The window starts at 520 × 620, is resizable down to 420 × 360, and uses a tra
 
 The local bundle is signed ad hoc with an explicit identifier-based designated requirement for development; it is not Developer ID signed or notarized for distribution. This keeps the local signing requirement stable across rebuilds rather than using a changing executable hash. For certificate-based signing, set `GOPEEK_SIGN_IDENTITY` when packaging. `make prototype` builds the frontend and embeds it in the executable; no frontend dev server is required to run the bundle. API calls happen only when you explicitly request a response in Work. There are no remote fonts, telemetry, or continuous screen capture. The separate Capture checks tab remains a deterministic demo with no API calls.
 
+The app icon uses the Capture brackets design. Its vector source is [appicon.svg](apps/desktop/build/appicon.svg), with a committed 1024 px [PNG rendering](apps/desktop/build/appicon.png). Packaging generates the macOS icon representations from that PNG before signing. The app also embeds the PNG and sets its Dock icon on startup, including direct executable and development launches. After editing the SVG, regenerate the PNG with `resvg apps/desktop/build/appicon.svg apps/desktop/build/appicon.png` before rebuilding.
+
 ## Set up a provider and work through a problem
 
 Open **Settings → Provider**, choose and save the provider/model, enter your key in the masked **API key** field, and click **Save API key**. The field clears after saving. The UI shows only whether a key is saved; it never retrieves or displays the saved value. To replace a key, enter a new one; **Delete saved key** removes it from Keychain.
